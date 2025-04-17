@@ -28,7 +28,6 @@ import { createPortal } from 'react-dom';
 import { arrayMove } from '@dnd-kit/sortable';
 
 function HomePage() {
-  const [username, setUsername] = useState('');
   const [newTaskTitle, setNewTaskTitle] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -38,19 +37,6 @@ function HomePage() {
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 5 } })
   );
-  useEffect(() => {
-    const fetchUsername = async () => {
-      if (user) {
-        const userRef = ref(db, '/users/' + user.uid);
-        const snapshot = await get(userRef);
-        if (snapshot.exists()) {
-          const userData = snapshot.val();
-          setUsername(userData.username);
-        }
-      }
-    };
-    fetchUsername();
-  }, [user]);
 
   useEffect(() => {
     if (!user) return;
@@ -101,14 +87,12 @@ function HomePage() {
 
   const deleteTask = async (taskId: string) => {
     if (!user?.uid) {
-      console.log('Usuario no autenticado');
       return;
     }
 
     try {
       const taskRef = ref(db, `tasks/${user?.uid}/${taskId}`);
       await remove(taskRef);
-      console.log('tarea borrada');
     } catch {
       // sooner
     }
