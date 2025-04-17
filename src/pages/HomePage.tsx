@@ -3,7 +3,6 @@ import { useAuth } from '../context/AuthContext';
 import { useEffect, useState } from 'react';
 import {
   db,
-  get,
   ref,
   set,
   update,
