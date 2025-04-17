@@ -132,7 +132,7 @@ function Form({ title }: Props) {
         <Button
           variant='primary'
           size='small'
-          className='group w-full border-2   px-4 py-1 rounded-full justify-between flex items-center  font-medium '
+          className='group w-full border-2 border-blue-300 px-4 py-1 rounded-full justify-between flex items-center  font-medium '
           onClick={handleAuth}
         >
           <span className='ml-4 group-hover:ml-2 transition-all duration-300'>
