@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-special-gothic: 'Special Gothic Expanded One', sans-serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
