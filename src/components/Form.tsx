@@ -72,7 +72,7 @@ function Form({ title }: Props) {
       <h1 className='font-montserrat text-2xl font-bold text-gray-800 dark:text-blue-50'>
         {title}
       </h1>
-      <div className='h-auto w-[20%] px-4 py-6 bg-blue-50 dark:bg-gray-800 dark:shadow-blue-300/20 rounded-md flex flex-col justify-center items-center gap-4 shadow-lg shadow-blue-300/80'>
+      <div className='h-auto w-[80%] lg:w-[20%] px-4 py-6 bg-blue-50 dark:bg-gray-800 dark:shadow-blue-300/20 rounded-md flex flex-col justify-center items-center gap-4 shadow-lg shadow-blue-300/80'>
         <form
           className='flex flex-col w-full  gap-3'
           onKeyDown={(e) => {

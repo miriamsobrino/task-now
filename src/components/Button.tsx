@@ -11,7 +11,7 @@ function Button({
   return (
     <>
       <button
-        className={`w-auto ${onlyIcon ? 'px-2' : 'px-4'} py-1 gap-2 ${
+        className={`w-auto ${onlyIcon ? 'px-2 py-2' : 'px-4 py-1'} py-1 gap-2 ${
           variant === 'primary'
             ? 'bg-blue-200  border-blue-50  '
             : 'bg-transparent border-blue-200 dark:border-gray-700 dark:hover:shadow-blue-500 '
