@@ -192,7 +192,7 @@ function HomePage() {
   };
 
   return (
-    <div className='w-full relative z-10 justify-center lg:justify-start items-center h-screen pt-16 flex flex-col gap-4  bg-blue-100  font-montserrat dark:bg-gray-900 '>
+    <div className='w-full relative z-10 justify-center lg:justify-start items-center h-screen pt-6 lg:pt-16 flex flex-col gap-4  bg-blue-100  font-montserrat dark:bg-gray-900 '>
       <DndContext
         sensors={sensors}
         onDragStart={onDragStart}

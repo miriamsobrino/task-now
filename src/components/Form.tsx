@@ -99,7 +99,7 @@ function Form({ title }: Props) {
             placeholder='Email'
           />
 
-          <div className=' border-b-2  pr-2 focus-within:bg-blue-50 focus-within:outline-blue-300 focus-within:outline-2 border-blue-200 dark:border-gray-700 rounded-md  text-base   bg-blue-100 text-gray-800 dark:bg-gray-900 flex justify-between items-center'>
+          <div className=' border-b-2  pr-2 dark:focus-within:bg-gray-700 focus-within:bg-blue-50 focus-within:outline-blue-300 focus-within:outline-2 border-blue-200 dark:border-gray-700 rounded-md  text-base   bg-blue-100 text-gray-800 dark:bg-gray-900 flex justify-between items-center'>
             <Input
               type={`${passwordVisible ? 'text' : 'password'}`}
               value={password}
@@ -112,7 +112,7 @@ function Form({ title }: Props) {
             {passwordVisible ? (
               <IoMdEyeOff
                 size={20}
-                className='text-blue-400 cursor-pointer'
+                className='text-blue-400 cursor-pointe'
                 onClick={() => setPasswordVisible(false)}
               />
             ) : (
