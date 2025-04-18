@@ -17,7 +17,7 @@ function WelcomePage() {
     navigate('/sign-up');
   };
   return (
-    <div className='w-full relative z-2 justify-center items-center h-screen flex flex-col overflow-y-hidden gap-6 lg:gap-4 bg-blue-100  dark:bg-gray-900 '>
+    <div className='w-full relative z-2 justify-center items-center min-h-[100dvh] flex flex-col overflow-y-hidden gap-6 lg:gap-4 bg-blue-100  dark:bg-gray-900 '>
       <div className='flex flex-col justify-center items-center gap-2 px-6 z-10 mt-[320px] lg:mt-[400px]'>
         <h2 className='text-3xl lg:text-5xl font-montserrat font-bold max-w-[600px] text-center bg-gradient-to-b from-blue-500 via-blue-500 to-blue-200 bg-clip-text text-transparent'>
           Task Management for Productive Teams
@@ -31,30 +31,37 @@ function WelcomePage() {
         Get Started
       </Button>
       <div
-        className=' w-[90%] lg:w-[60%] h-48 lg:h-full overflow-hidden relative rounded-md  shadow-xl shadow-blue-300/20 lg:shadow-2xl lg:shadow-blue-300/80 lg:border-t-4 lg:border-r-4 lg:border-l-4 border-4 border-blue-50  mt-8 lg:mt-4 lg:[mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)] 
+        className=' w-[90%] lg:w-[60%] h-48 lg:h-full  relative rounded-md lg:border-t-4 lg:border-r-4 lg:border-l-4 border-4 border-blue-50  mt-8 lg:mt-4 lg:[mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)] 
 '
       >
         {darkMode ? (
           <img
             src='images/tasknow-screenshot-darkmode.webp'
             alt='Imagen'
-            className='w-full h-full object-cover  object-left lg:object-top  z-20 '
+            className='w-full h-full object-cover  object-left lg:object-top z-20 '
           />
         ) : (
           <img
             src='images/tasknow-screenshot.webp'
             alt='Imagen'
-            className='w-full mx-auto h-full object-cover  object-left lg:object-top  z-20 '
+            className='w-full mx-auto h-full object-cover object-left lg:object-top z-20 '
           />
         )}
+        <div
+          className={`w-full lg:w-[60%] h-56 lg:h-96  ${
+            darkMode
+              ? 'bg-gradient-to-b from-gray-500 via-gray-800 to-gray-900'
+              : 'bg-gradient-to-b from-blue-500/40 via-blue-200 to-blue-50'
+          } blur-md absolute -z-1 inset-0  `}
+        ></div>
       </div>
-      <div
+      {/*  <div
         className={`w-[85%] lg:w-[60%] h-48 lg:h-96  ${
           darkMode
             ? 'bg-gradient-to-b from-gray-500 via-gray-800 to-gray-900'
             : 'bg-gradient-to-b from-blue-500/40 via-blue-200 to-blue-50'
-        } blur-md absolute bottom-16 lg:-bottom-14  -z-1  `}
-      ></div>
+        } blur-md absolute   -z-1  `}
+      ></div>*/}
     </div>
   );
 }

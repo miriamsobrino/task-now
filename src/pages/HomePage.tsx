@@ -192,13 +192,13 @@ function HomePage() {
   };
 
   return (
-    <div className='w-full relative z-10 justify-start items-center h-screen pt-16 flex flex-col gap-4  bg-blue-100  font-montserrat dark:bg-gray-900 '>
+    <div className='w-full relative z-10 justify-center lg:justify-start items-center h-screen pt-16 flex flex-col gap-4  bg-blue-100  font-montserrat dark:bg-gray-900 '>
       <DndContext
         sensors={sensors}
         onDragStart={onDragStart}
         onDragOver={onDragOver}
       >
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-4 p-12 h-auto w-[70%] '>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-4 p-12 h-auto w-full lg:w-[70%] '>
           <ColumnContainer
             id='to-do'
             title='To Do'
