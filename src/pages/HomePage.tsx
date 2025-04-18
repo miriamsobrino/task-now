@@ -243,7 +243,7 @@ function HomePage() {
             className='fixed inset-0 w-full h-full bg-black/40 flex justify-center items-center z-50 font-montserrat'
           >
             <div
-              className='bg-sky-100 rounded-lg p-6 w-96 shadow-lg dark:bg-gray-800'
+              className='bg-blue-50 rounded-lg p-6 w-[85%] lg:w-96 shadow-lg dark:bg-gray-800'
               onClick={(e) => e.stopPropagation()}
             >
               <div className='flex justify-between items-center mb-4'>
@@ -283,7 +283,12 @@ function HomePage() {
                 >
                   Cancel
                 </Button>
-                <Button variant='primary' size='small' onClick={addTask}>
+                <Button
+                  variant='primary'
+                  size='small'
+                  onClick={addTask}
+                  className='border-blue-300'
+                >
                   Add
                 </Button>
               </div>

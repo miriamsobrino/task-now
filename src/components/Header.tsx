@@ -27,7 +27,7 @@ function Header({ className }: Props) {
   };
   return (
     <div
-      className={`w-[90%] mx-auto justify-between items-center py-4  dark:bg-gray-900 bg-blue-100 flex ${className}`}
+      className={`w-full lg:px-20 px-6 mx-auto justify-between items-center py-4  dark:bg-gray-900 bg-blue-100 flex ${className}`}
     >
       <h1
         className='font-special-gothic text-2xl select-none cursor-pointer hover:scale-[1.05] transition-all duration-300'

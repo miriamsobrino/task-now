@@ -17,10 +17,12 @@ function Form({ title }: Props) {
   const [password, setPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [error, setError] = useState('');
+
   const { signIn, signInWithEmail, signUpWithEmail } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const isSignUpPage = location.pathname === '/sign-up';
+
   const handleAuth = async () => {
     if (
       !email.trim() ||
@@ -99,12 +101,18 @@ function Form({ title }: Props) {
             placeholder='Email'
           />
 
-          <div className=' border-b-2  pr-2 dark:focus-within:bg-gray-700 focus-within:bg-blue-50 focus-within:outline-blue-300 focus-within:outline-2 border-blue-200 dark:border-gray-700 rounded-md  text-base   bg-blue-100 text-gray-800 dark:bg-gray-900 flex justify-between items-center'>
+          <div
+            tabIndex={0}
+            className=' border-b-2  pr-2 dark:focus-within:bg-gray-700 focus-within:bg-blue-50 focus-within:outline-blue-300 focus-within:outline-2 border-blue-200 dark:border-gray-700 rounded-md  text-base   bg-blue-100 text-gray-800 dark:bg-gray-900 flex justify-between items-center'
+          >
             <Input
               type={`${passwordVisible ? 'text' : 'password'}`}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              onFocus={() => setError('')}
+              onFocus={() => {
+                setIsFocused(true);
+                setError('');
+              }}
               placeholder='Password'
               className='  placeholder:text-blue-400 w-full focus:outline-none border-none '
             />
