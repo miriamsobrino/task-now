@@ -7,6 +7,7 @@ import { FaArrowRightLong } from 'react-icons/fa6';
 import GoogleIcon from '../assets/icons/GoogleIcon';
 import { useLocation } from 'react-router-dom';
 import Input from './Input';
+import { useLoading } from '../context/AppContext';
 
 interface Props {
   title: string;
@@ -17,7 +18,7 @@ function Form({ title }: Props) {
   const [password, setPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [error, setError] = useState('');
-
+  const { loading, setLoading } = useLoading();
   const { signIn, signInWithEmail, signUpWithEmail } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -32,6 +33,7 @@ function Form({ title }: Props) {
       setError('All fields are required');
       return;
     }
+    setLoading(true);
     try {
       if (isSignUpPage) {
         await signUpWithEmail(username, email, password);
@@ -55,6 +57,8 @@ function Form({ title }: Props) {
       } else {
         setError('An unexpected error occurred. Please try again.');
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -69,6 +73,9 @@ function Form({ title }: Props) {
       navigate('/sign-up');
     }
   };
+  if (loading) {
+    return <span className='loader'></span>;
+  }
   return (
     <>
       <h1 className='font-montserrat text-2xl font-bold text-gray-800 dark:text-blue-50'>
@@ -101,10 +108,7 @@ function Form({ title }: Props) {
             placeholder='Email'
           />
 
-          <div
-            tabIndex={0}
-            className=' border-b-2  pr-2 dark:focus-within:bg-gray-700 focus-within:bg-blue-50 focus-within:outline-blue-300 focus-within:outline-2 border-blue-200 dark:border-gray-700 rounded-md  text-base   bg-blue-100 text-gray-800 dark:bg-gray-900 flex justify-between items-center'
-          >
+          <div className=' border-b-2  pr-2 dark:focus-within:bg-gray-700 focus-within:bg-blue-50 focus-within:outline-blue-300 focus-within:outline-2 border-blue-200 dark:border-gray-700 rounded-md  text-base   bg-blue-100 text-gray-800 dark:bg-gray-900 flex justify-between items-center'>
             <Input
               type={`${passwordVisible ? 'text' : 'password'}`}
               value={password}

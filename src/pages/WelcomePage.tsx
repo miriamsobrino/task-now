@@ -8,14 +8,17 @@ function WelcomePage() {
   const navigate = useNavigate();
   const { user } = useAuth();
   const { darkMode } = useDarkMode();
+
   useEffect(() => {
     if (user) {
       navigate('/');
     }
   }, [user, navigate]);
+
   const NavigateToLogin = () => {
     navigate('/sign-up');
   };
+
   return (
     <div className='w-full relative z-2 justify-center items-center min-h-[100dvh] flex flex-col overflow-y-hidden gap-6 lg:gap-4 bg-blue-100  dark:bg-gray-900 '>
       <div className='flex flex-col justify-center items-center gap-2 px-6 z-10 mt-[320px] lg:mt-[400px]'>
@@ -55,13 +58,6 @@ function WelcomePage() {
           } blur-md absolute -z-1 inset-0  `}
         ></div>
       </div>
-      {/*  <div
-        className={`w-[85%] lg:w-[60%] h-48 lg:h-96  ${
-          darkMode
-            ? 'bg-gradient-to-b from-gray-500 via-gray-800 to-gray-900'
-            : 'bg-gradient-to-b from-blue-500/40 via-blue-200 to-blue-50'
-        } blur-md absolute   -z-1  `}
-      ></div>*/}
     </div>
   );
 }

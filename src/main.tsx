@@ -11,6 +11,7 @@ import PublicRoute from './components/PublicRoute.tsx';
 import SignInPage from './pages/SignInPage.tsx';
 import Layout from './Layout.tsx';
 import { ThemeProvider } from './context/ThemeContext.tsx';
+import { AppProvider } from './context/AppContext.tsx';
 
 const router = createBrowserRouter([
   {
@@ -55,10 +56,12 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ThemeProvider>
-      <AuthProvider>
-        <RouterProvider router={router} />
-      </AuthProvider>
-    </ThemeProvider>
+    <AppProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <RouterProvider router={router} />
+        </AuthProvider>
+      </ThemeProvider>
+    </AppProvider>
   </StrictMode>
 );

@@ -92,8 +92,8 @@ function HomePage() {
     try {
       const taskRef = ref(db, `tasks/${user?.uid}/${taskId}`);
       await remove(taskRef);
-    } catch {
-      // sooner
+    } catch (error) {
+      console.error(error);
     }
     const filteredTask = tasks.filter((task) => task.id !== taskId);
     setTasks(filteredTask);
