@@ -21,7 +21,7 @@ function WelcomePage() {
 
   return (
     <div className='w-full relative z-2 justify-center items-center min-h-[100dvh] flex flex-col overflow-y-hidden gap-6 lg:gap-4 bg-blue-100  dark:bg-gray-900 '>
-      <div className='flex flex-col justify-center items-center gap-2 px-6 z-10  lg:mt-[400px]'>
+      <div className='flex flex-col justify-center items-center gap-2 overflow-y-hidden px-6 z-10 pt-[320px] lg:mt-[400px]'>
         <h2 className='text-3xl lg:text-5xl font-montserrat font-bold max-w-[600px] text-center bg-gradient-to-b from-blue-500 via-blue-500 to-blue-200 bg-clip-text text-transparent'>
           Task Management for Productive Teams
         </h2>
