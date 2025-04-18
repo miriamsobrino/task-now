@@ -109,10 +109,7 @@ function Form({ title }: Props) {
               type={`${passwordVisible ? 'text' : 'password'}`}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              onFocus={() => {
-                setIsFocused(true);
-                setError('');
-              }}
+              onFocus={() => setError('')}
               placeholder='Password'
               className='  placeholder:text-blue-400 w-full focus:outline-none border-none '
             />
