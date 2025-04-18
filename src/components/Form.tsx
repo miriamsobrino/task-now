@@ -160,7 +160,9 @@ function Form({ title }: Props) {
         </Button>
         <div className='flex flex-col gap-1 text-center'>
           <p className='text-sm text-gray-800 dark:text-blue-50'>
-            If you don't have an account,{' '}
+            {isSignUpPage
+              ? 'Already have an account? '
+              : `If you don't have an account, `}
             <button
               className='underline text-blue-400 cursor-pointer font-medium hover:text-blue-300 transition-all duration-300'
               onClick={navigateToSignPage}
