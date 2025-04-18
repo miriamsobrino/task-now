@@ -20,9 +20,9 @@ function WelcomePage() {
   };
 
   return (
-    <div className='w-full relative z-2 justify-center items-center h-screen flex flex-col overflow-hidden gap-6 lg:gap-4 bg-blue-100  dark:bg-gray-900 '>
-      <div className='flex flex-col justify-center items-center gap-2  overflow-y-hidden px-6 z-10 mt-[320px] lg:mt-[400px]'>
-        <h2 className='text-3xl lg:text-5xl font-montserrat font-bold max-w-[600px] text-center bg-gradient-to-b from-blue-500 via-blue-500 to-blue-200 bg-clip-text text-transparent'>
+    <div className='w-full relative z-2 justify-center items-center h-screen flex flex-col overflow-y-hidden gap-6 lg:gap-4 bg-blue-100  dark:bg-gray-900 '>
+      <div className='flex flex-col justify-center items-center gap-2 px-6 z-10   lg:mt-[400px]'>
+        <h2 className='text-3xl lg:text-5xl font-montserrat font-bold max-w-[600px]  text-center bg-gradient-to-b from-blue-500 via-blue-500 to-blue-200 bg-clip-text text-transparent'>
           Task Management for Productive Teams
         </h2>
         <h3 className='font-montserrat text-center lg:text-xl text-gray-600 dark:text-blue-50'>
@@ -34,7 +34,7 @@ function WelcomePage() {
         Get Started
       </Button>
       <div
-        className=' w-[90%] lg:w-[60%] h-48  lg:h-full  relative rounded-md lg:border-t-4 lg:border-r-4 lg:border-l-4 border-4 border-blue-50  mt-8 lg:mt-4 lg:[mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)] 
+        className=' w-[90%] lg:w-[60%] h-60 absolute -bottom-10 lg:h-full  lg:relative rounded-md lg:border-t-4 lg:border-r-4 lg:border-l-4 border-4 border-blue-50  mt-8 lg:mt-4 lg:[mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)] 
 '
       >
         {darkMode ? (
