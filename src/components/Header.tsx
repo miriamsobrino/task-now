@@ -50,7 +50,7 @@ function Header({ className }: Props) {
 
         {isHome && (
           <div className='flex gap-2'>
-            <Button size='small' variant='secondary' onClick={signOut}>
+            <Button size='small' variant='primary' onClick={signOut}>
               Log Out <FiLogOut />
             </Button>
           </div>
