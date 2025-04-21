@@ -9,7 +9,7 @@ function SignUpPage() {
         darkMode ? 'bg-gray-900' : 'bg-gradient-to-b from-blue-100 to-blue-50'
       } font-montserrat`}
     >
-      <Form title='Sign Up' />{' '}
+      <Form title='Sign Up' />
     </div>
   );
 }

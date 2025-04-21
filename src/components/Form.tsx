@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useLoading } from '../context/AppContext';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
-import Button from './Button';
 import { FaArrowRightLong } from 'react-icons/fa6';
+import { FiUser } from 'react-icons/fi';
 import GoogleIcon from '../assets/icons/GoogleIcon';
 import { useLocation } from 'react-router-dom';
+import Button from './Button';
 import Input from './Input';
-import { useLoading } from '../context/AppContext';
 
 interface Props {
   title: string;
@@ -19,7 +20,13 @@ function Form({ title }: Props) {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [error, setError] = useState('');
   const { loading, setLoading } = useLoading();
-  const { signIn, signInWithEmail, signUpWithEmail } = useAuth();
+  const {
+    signIn,
+    signInWithEmail,
+    signUpWithEmail,
+    signInAsGuest,
+    resetPassword,
+  } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const isSignUpPage = location.pathname === '/sign-up';
@@ -73,6 +80,34 @@ function Form({ title }: Props) {
       navigate('/sign-up');
     }
   };
+
+  const handleForgotPassword = async () => {
+    if (!email.trim()) {
+      setError('Please enter your email.');
+      return;
+    }
+    try {
+      await resetPassword(email);
+      setError('');
+      alert('Check your email inbox.');
+    } catch (err: any) {
+      if (err.code === 'auth/user-not-found') {
+        setError('No user found with this email.');
+      } else {
+        setError('Something went wrong. Try again.');
+      }
+    }
+  };
+
+  const handleSignInAsGuest = async () => {
+    try {
+      await signInAsGuest();
+      navigate('/');
+    } catch {
+      setError('Error to enter like a guest. Try again.');
+    }
+  };
+
   if (loading) {
     return <span className='loader'></span>;
   }
@@ -138,6 +173,17 @@ function Form({ title }: Props) {
             {error}
           </div>
         )}
+        {!isSignUpPage && (
+          <div className='w-full flex justify-end'>
+            <button
+              className='underline text-blue-400 cursor-pointer text-sm font-medium hover:text-blue-300 transition-all duration-300'
+              onClick={handleForgotPassword}
+            >
+              Forgot Password?
+            </button>
+          </div>
+        )}
+
         <Button
           variant='primary'
           size='small'
@@ -158,7 +204,23 @@ function Form({ title }: Props) {
           Continue with Google
           <GoogleIcon />
         </Button>
-        <div className='flex flex-col gap-1 text-center'>
+        <div className='w-full mx-auto flex items-center justify-center gap-2'>
+          <div className='h-[0.2px] bg-blue-300 w-full'></div>
+          <p className=' text-blue-500 font-medium text-sm'>Or</p>
+          <div className='h-[0.2px] bg-blue-300 w-full'></div>
+        </div>
+        {isSignUpPage && (
+          <Button
+            variant='secondary'
+            size='small'
+            onClick={handleSignInAsGuest}
+            className='w-full border-2 border-blue-300  px-4 py-1 rounded-full flex items-center gap-2 font-medium bg-transparent'
+          >
+            Enter as a guest
+            <FiUser size={20} />
+          </Button>
+        )}
+        <div className='flex flex-col gap-2 text-center'>
           <p className='text-sm text-gray-800 dark:text-blue-50'>
             {isSignUpPage
               ? 'Already have an account? '
@@ -170,6 +232,13 @@ function Form({ title }: Props) {
               {isSignUpPage ? 'sign in' : 'sign up'}
             </button>
           </p>
+
+          {/*    <button
+            className='underline text-blue-400 cursor-pointer text-sm font-medium hover:text-blue-300 transition-all duration-300'
+            onClick={handleForgotPassword}
+          >
+            Enter as a guest
+          </button>*/}
         </div>
       </div>
     </>

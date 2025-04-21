@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   User,
+  sendPasswordResetEmail,
 } from 'firebase/auth';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { auth, provider, db, ref, set } from '../config/firebaseConfig.ts';
@@ -18,7 +19,9 @@ interface AuthContextType {
     email: string,
     password: string
   ) => Promise<void>;
+  signInAsGuest: () => Promise<void>;
   logOut: () => Promise<void>;
+  resetPassword: (email: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -95,9 +98,41 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const logOut = async () => {
     await signOut(auth);
   };
+
+  const resetPassword = async (email: string) => {
+    try {
+      await sendPasswordResetEmail(auth, email);
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const signInAsGuest = async () => {
+    const guestEmail = import.meta.env.VITE_GUEST_EMAIL;
+    const guestPassword = import.meta.env.VITE_GUEST_PASSWORD;
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        guestEmail,
+        guestPassword
+      );
+      setUser(userCredential.user);
+    } catch (error) {
+      throw error;
+    }
+  };
+
   return (
     <AuthContext.Provider
-      value={{ user, signIn, signInWithEmail, signUpWithEmail, logOut }}
+      value={{
+        user,
+        signIn,
+        signInWithEmail,
+        signUpWithEmail,
+        signInAsGuest,
+        logOut,
+        resetPassword,
+      }}
     >
       {children}
     </AuthContext.Provider>
